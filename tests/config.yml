@@ -1,0 +1,66 @@
+# Copyright (C) 2021-2021 52°North Spatial Information Research GmbH
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 2 as published
+# by the Free Software Foundation.
+#
+# If the program is linked with libraries which are licensed under one of
+# the following licenses, the combination of the program with the linked
+# library is not considered a "derivative work" of the program:
+#
+#     - Apache License, version 2.0
+#     - Apache Software License, version 1.0
+#     - GNU Lesser General Public License, version 3
+#     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+#     - Common Development and Distribution License (CDDL), version 1.0
+#
+# Therefore the distribution of the program linked with libraries licensed
+# under the aforementioned licenses, is permitted by the copyright holders
+# if the distribution is compliant with both the GNU General Public
+# License version 2 and the aforementioned licenses.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+# Public License for more details.
+#
+server:
+    bind:
+        host: 0.0.0.0
+        port: 5000
+    cors: True
+    encoding: utf-8
+    language: en-US
+    limit: 10
+    manager:
+        name: TinyDB
+        connection: /tmp/pygeoapi-process-manager.db
+        output_dir: /tmp/pygeoapi-process-outputs/
+    map:
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+    mimetype: application/json; charset=UTF-8
+    pretty_print: True
+    url: http://localhost:5000/
+
+logging:
+    level: DEBUG
+
+metadata:
+    identification:
+        title: '[TEST] OGC API Processes for Landsat Prediction'
+        description: '[TEST] instance'
+    contact:
+        name: Doe, John
+    license:
+        name: CC-BY 4.0 license
+        url: https://creativecommons.org/licenses/by/4.0/
+    provider:
+        name: ACME
+        url: https://example.org/
+
+resources:
+    landcover-prediction:
+        type: process
+        processor:
+            name: landsatpredictor.LandcoverPredictionProcessor

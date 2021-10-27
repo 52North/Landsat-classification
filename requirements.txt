@@ -1,9 +1,12 @@
+landsatxplore
 matplotlib
-numpy
+numpy~=1.19.2
 opencv-python
 Pillow
-tensorflow
-scikit-image
+pygeoapi
 rasterio
 requests
+scikit-image
 scikit-learn
+tensorflow~=2.6.0
+tinydb
